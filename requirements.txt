@@ -26,3 +26,6 @@ nodeenv==1.7.0
 platformdirs==3.0.0
 PyYAML==6.0
 virtualenv==20.19.0
+
+# Runtime
+gunicorn==20.1.0

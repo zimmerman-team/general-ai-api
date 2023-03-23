@@ -5,7 +5,7 @@ This is a runnable service that provides access to general AI services developed
 The application was developed on python 3.11.2, with [flask](https://flask.palletsprojects.com/en/2.2.x/) as its base<br />
 Install the requirements with `pip install -r requirements.txt`.<br />
 Make sure to run `pre-commit install --hook-type commit-msg` to enable the commit hooks.<br />
-[api/\_\_init\_\_.py](api/__init__.py) is the entrypoint for the application.<br />
+[api/\_\_init\_\_.py](api/__init__.py) defines the entrypoint for the application, which is started from [manage.py](manage.py)<br />
 Running the API can be done locally with `flask run`. This starts the flask app 'api' due to the [.flaskenv settings](.flaskenv).<br />
 
 ### API Directory

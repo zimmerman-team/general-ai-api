@@ -1,5 +1,5 @@
 #.flaskenv
-FLASK_APP=api
+FLASK_APP=manage
 
 # FLASK_ENV - Controls the environment.
 # FLASK_DEBUG - Enables debug mode.
