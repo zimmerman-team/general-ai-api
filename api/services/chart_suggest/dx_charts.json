@@ -1,0 +1,71 @@
+{
+    "barchart": {
+        "mapping": [
+            {
+                "name": "Bars",
+                "types": ["date", "number", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our barchart has inputs for bars and size. Bars either a date, number or string, defining the X-axis. Size is a number defining the Y-axis, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "geomap": {
+        "mapping": [
+            {
+                "name": "Country",
+                "types": ["string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our geomap has inputs for country and size. Country is a string representation of a country. Size is a representation of the value, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "linechart": {
+        "mapping": [
+            {
+                "name": "X Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Y Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Lines",
+                "types": ["number", "date", "string"]
+            }
+        ],
+        "semantic": "Our linechart has inputs for X Axis, Y Axis and Lines. X Axis and Y Axis are either a number or date, defining the X and Y axis. Lines is a number, date or string, defining the lines on the chart by for example grouping the data points in a category."
+    },
+    "sankey": {
+        "mapping": [
+            {
+                "name": "Steps",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our sankey has inputs for steps and size. Steps is an ordered list of: a number, date or string, defining the steps in the sankey. Size is a number defining the size of the steps, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "treemap": {
+        "mapping": [
+            {
+                "name": "Hierarchy",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our treemap has inputs for hierarchy and size. Hierarchy is an ordered list of: a number, date or string, defining the blocks in the treemap. Size is a number defining the size of the hierarchy blocks, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    }
+}

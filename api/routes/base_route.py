@@ -1,5 +1,7 @@
 from flask import Blueprint
 
+from api.routes import util
+
 bp = Blueprint('base_route', __name__)
 BASE_REPSONSE = 'Welcome to the Zimmerman General AI API! Consult the documentation for the API endpoints.'
 
@@ -7,4 +9,4 @@ BASE_REPSONSE = 'Welcome to the Zimmerman General AI API! Consult the documentat
 @bp.route('/', methods=['GET'])
 def base_route():
     # Return a 200 OK response as JSON
-    return {'code': 200, 'result': BASE_REPSONSE}, 200
+    return util.json_return(200, BASE_REPSONSE)

@@ -35,4 +35,4 @@ chore: Changes to the build process or auxiliary tools and libraries such as doc
 [API Routes documentation](api/routes/README.md)
 
 ## Available services
-We are currently at the base implementation, so no services yet included.
+- Chart suggestion: providing a CSV file and either receiving recommendations of chart types with fields to use, or providing a CSV file and a chart type, and receiving recommendations for the most likely useful chart.

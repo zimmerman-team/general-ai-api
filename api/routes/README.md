@@ -15,5 +15,7 @@ def <NAME>():
 ```
 
 ## Available endpoints
-- `/`: The central route registered in the app.
-- `/health-check`: available to check liveness of the API.
+- `/`: GET: The central route registered in the app.
+- `/health-check`: GET: available to check liveness of the API.
+- `/chart-suggest/csv-dataset`: POST: submit form-data with `file` as a CSV file, returns recommendations for charts to use on that dataset.
+- `/chart-suggest/csv-dataset`: POST: submit form-data with `file` as a CSV file, and `chart` as a string type of chart ([current supported charts](../services/chart_suggest/dx_charts.json)), returns a recommendation which fields to use for the provided chart and data.
