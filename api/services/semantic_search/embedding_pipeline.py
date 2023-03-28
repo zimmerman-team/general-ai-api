@@ -1,8 +1,8 @@
+import os
+
+import openai
 import pandas as pd
 import tiktoken
-import os
-import openai
-
 from openai.embeddings_utils import get_embedding
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")

@@ -1,10 +1,10 @@
-import pandas as pd
-import os
-import openai
-import numpy as np
 import json
+import os
 
-from openai.embeddings_utils import get_embedding, cosine_similarity
+import numpy as np
+import openai
+import pandas as pd
+from openai.embeddings_utils import cosine_similarity, get_embedding
 
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
