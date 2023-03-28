@@ -2,8 +2,8 @@ import json
 
 from api.services.openai.prompt import prompt_with_storage
 
-PREVIOUS_SUGGESTIONS_FILE = './api/services/chart_suggest/chart_for_csv_file_with_context_previous_suggestions.json'
-DX_CHART_DEFINITIONS = './api/services/chart_suggest/dx_charts.json'
+PREVIOUS_SUGGESTIONS_FILE = './api/services/chart_suggest/data/chart_for_csv_file_with_context_previous_suggestions.json'
+DX_CHART_DEFINITIONS = './api/services/chart_suggest/data/dx_charts.json'
 
 
 def suggest_chart_for_csv_file_with_context(df):

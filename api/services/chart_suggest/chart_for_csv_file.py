@@ -1,6 +1,6 @@
 from api.services.openai.prompt import prompt_with_storage
 
-PREVIOUS_SUGGESTIONS_FILE = './api/services/chart_suggest/chart_for_csv_file_previous_suggestions.json'
+PREVIOUS_SUGGESTIONS_FILE = './api/services/chart_suggest/data/chart_for_csv_file_previous_suggestions.json'
 
 
 def suggest_chart_for_csv_file(df):
