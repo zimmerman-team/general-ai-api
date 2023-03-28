@@ -54,3 +54,27 @@ requests==2.28.2
 tqdm==4.65.0
 urllib3==1.26.15
 yarl==1.8.2
+## Embedding dependencies
+contourpy==1.0.7
+cycler==0.11.0
+et-xmlfile==1.1.0
+fonttools==4.39.2
+joblib==1.2.0
+kiwisolver==1.4.4
+matplotlib==3.7.1
+openpyxl==3.1.2
+packaging==23.0
+pandas-stubs==1.5.3.230321
+pillow==9.4.0
+plotly==5.13.1
+pyparsing==3.0.9
+scikit-learn==1.2.2
+scipy==1.10.1
+tenacity==8.2.2
+threadpoolctl==3.1.0
+types-pytz==2023.2.0.1
+
+# Tiktoken
+tiktoken==0.3.2
+## Dependencies
+regex==2023.3.23
