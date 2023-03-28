@@ -2,6 +2,8 @@
 This is a runnable service that provides access to general AI services developed by Zimmerman.
 
 ## Development
+Check out [Docker](#docker) for a quickstart guide.
+
 The application was developed on python 3.11.2, with [flask](https://flask.palletsprojects.com/en/2.2.x/) as its base<br />
 Install the requirements with `pip install -r requirements.txt`.<br />
 Make sure to run `pre-commit install --hook-type commit-msg` to enable the commit hooks.<br />
@@ -19,11 +21,9 @@ Use the .env.example file. Notable fields:
 - The services are modules that define application logic or interact with other services or the db layer. Routes should be as simple as possible and delegate all logic to the services.
 
 ### Code quality
-*flake8* is used to maintain code quality in pep8 style
-
-*isort* is used to maintain the imports
-
-*pre-commit* is used to enforce commit styles in the form
+*flake8* is used to maintain code quality in pep8 style<br />
+*isort* is used to maintain the imports<br />
+*pre-commit* is used to enforce commit styles in the form<br />
 ```
 feat: A new feature
 fix: A bug fix
@@ -40,3 +40,17 @@ chore: Changes to the build process or auxiliary tools and libraries such as doc
 
 ## Available services
 - Chart suggestion: providing a CSV file and either receiving recommendations of chart types with fields to use, or providing a CSV file and a chart type, and receiving recommendations for the most likely useful chart.
+
+## Docker
+[Install docker](https://docs.docker.com/get-docker/) (make sure docker compose is installed).
+
+Once the .env file is set up, use the [docker-compose](docker-compose.yml) file to run the API.
+```
+docker compose up
+```
+
+Will start (and build if this is the first time running) the API, alongside NGINX to provide access to the API.<br />
+Re-build with `docker compose up --build`<br />
+Shut down with `docker compose down`
+
+Note: We've changed from `alpine` to `slim` to reduce buildtime by 50x.

@@ -1,10 +1,14 @@
-FROM python:3.11.2-alpine3.17
+FROM python:3.11.2-slim
 
 WORKDIR /app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+
+# # Update python pip install dependencies
+# RUN apk update
+# RUN apk add make automake gcc g++ subversion python3-dev
 
 # install dependencies
 RUN pip install --upgrade pip
