@@ -8,6 +8,10 @@ Make sure to run `pre-commit install --hook-type commit-msg` to enable the commi
 [api/\_\_init\_\_.py](api/__init__.py) defines the entrypoint for the application, which is started from [manage.py](manage.py)<br />
 Running the API can be done locally with `flask run`. This starts the flask app 'api' due to the [.flaskenv settings](.flaskenv).<br />
 
+### Environment
+Use the .env.example file. Notable fields:
+- `OPENAI_API_KEY`: found in [openAI settings](https://platform.openai.com/account/api-keys). Used for semantic searching.
+
 ### API Directory
 - The models are the data descriptor of our application, in many cases related to the database model. How each model is defined will heavily depend on the library you use to connect to your database.
 - The routes are the URIs to our application, where we define our resources and actions.
