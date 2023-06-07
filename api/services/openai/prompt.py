@@ -29,17 +29,22 @@ def prompt_with_storage(df_head, storage_file, prompt, hash_modifier=""):
             print("Returning existing previous suggestion.")
             return 200, previous_suggestions[md5_hash]
 
-    # # Generate suggestions using gpt3.5 turbo.
-    print("No previous suggestion found. Creating new suggestion.")
-    completion = openai.ChatCompletion.create(
-        model=OPENAI_MODEL,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    res = completion.choices[0].message.content
-    # Add an object with the hash as key and the result as value to, and add it to the previous suggestions file.
-    with open(storage_file, 'r') as f:
-        previous_suggestions = json.load(f)
-        previous_suggestions[md5_hash] = res
-    with open(storage_file, 'w') as f:
-        json.dump(previous_suggestions, f)
-    return 200, res
+    try:
+        # # Generate suggestions using gpt3.5 turbo.
+        print("No previous suggestion found. Creating new suggestion.")
+        completion = openai.ChatCompletion.create(
+            model=OPENAI_MODEL,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        res = completion.choices[0].message.content
+        # Add an object with the hash as key and the result as value to, and add it to the previous suggestions file.
+        with open(storage_file, 'r') as f:
+            previous_suggestions = json.load(f)
+            previous_suggestions[md5_hash] = res
+        with open(storage_file, 'w') as f:
+            json.dump(previous_suggestions, f)
+        return 200, res
+    except Exception as e:
+        res = "Error in prompt_with_storage: " + str(e)
+        print(res)
+        return 500, res
