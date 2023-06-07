@@ -22,7 +22,11 @@ def suggest_chart_fields_from_data(df, chart):
         Which columns would you assign to which inputs as mentioned above?
         If there is no fitting chart, please state so.
         If there is a size calculation required, recommend the most likely one,
-        and if you cannot determine the most likely one use the sum."""
+        and if you cannot determine the most likely one use the sum.
+        Please return your answer as a JSON object. For size, use the column as the key and the size as the value. 
+        If we are generating a linechart, please use the keys 'x' and 'y' for the x and y axis respectively, and for the lines use lowercase lines.
+        Please include a short title for the chart under the key 'title'. And the value {chart} under the key 'chartType'.
+        If you have an explanation for your answer, please include it in the JSON object under the key 'explanation'."""
 
     return prompt_with_storage(df_head, PREVIOUS_SUGGESTIONS_FILE, prompt, chart)
     # Check if we've created suggestions for this exact dataframe before.

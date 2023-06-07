@@ -10,7 +10,7 @@
                 "types": ["number"]
             }
         ],
-        "semantic": "Our barchart has inputs for bars and size. Bars either a date, number or string, defining the X-axis. Size is a number defining the Y-axis, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+        "semantic": "Our barchart has inputs for bars and size. Bars either a date, number or string, defining the X-axis. Size is a number defining the Y-axis, and can be the average, count, count unique, max, min, sum, median, csv or csv unique. Both 'bars' and 'size' can only have one input."
     },
     "geomap": {
         "mapping": [
