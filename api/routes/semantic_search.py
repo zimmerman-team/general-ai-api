@@ -4,6 +4,7 @@ from flask import Blueprint, request
 
 from api.routes import util
 from api.services.semantic_search.embedded_query import embedded_query, get_query_from_file
+from api.services.semantic_search.embedding_features import embedded_features
 from api.services.semantic_search.embedding_pipeline import embedding_pipeline
 
 bp = Blueprint('semantic_search', __name__, url_prefix='/semantic-search')
@@ -70,5 +71,23 @@ def voice_based_semantic_search_in_dataset():
         return util.json_return(400, "Embeddings with this name does not exist")
     # Execute the query
     code, res = embedded_query(dataset_path, query)
+
+    return util.json_return(code, res)
+
+
+@bp.route('/embedding-features', methods=['post'])
+def embedding_features():
+    """
+    tmp
+    """
+    dataset = request.form['dataset']
+    dataset = dataset + '_with_embeddings.csv'
+    dataset_path = os.path.join(DATASET_PATH, dataset)
+
+    # Check if a file exists at filepath
+    if not os.path.isfile(dataset_path):
+        return util.json_return(400, "Embeddings with this name does not exist")
+    # Execute the query
+    code, res = embedded_features(dataset_path)
 
     return util.json_return(code, res)

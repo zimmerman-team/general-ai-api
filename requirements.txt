@@ -79,3 +79,6 @@ types-pytz==2023.2.0.1
 tiktoken==0.3.2
 ## Dependencies
 regex==2023.3.23
+
+# Visualisations
+seaborn==0.12.2
