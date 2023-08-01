@@ -1,6 +1,6 @@
 from flask import Flask
 
-from api.routes import base_route, health_check, chart_suggest, semantic_search
+from api.routes import base_route, health_check, chart_suggest, semantic_search, prompts
 
 
 def create_app():
@@ -14,5 +14,6 @@ def create_app():
     app.register_blueprint(health_check.bp)
     app.register_blueprint(chart_suggest.bp)
     app.register_blueprint(semantic_search.bp)
+    app.register_blueprint(prompts.bp)
 
     return app
