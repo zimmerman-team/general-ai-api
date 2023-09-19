@@ -27,12 +27,12 @@ def prompt_with_storage(df_head, storage_file, prompt, hash_modifier="", tempera
     with open(storage_file, 'r') as f:
         previous_suggestions = json.load(f)
         if md5_hash in previous_suggestions:
-            print("Returning existing previous suggestion.")
+            print("prompt_with_storage -- Returning existing previous suggestion.")
             return 200, previous_suggestions[md5_hash]
 
     try:
         # # Generate suggestions using gpt3.5 turbo.
-        print("No previous suggestion found. Creating new suggestion.")
+        print("prompt_with_storage -- No previous suggestion found. Creating new suggestion.")
         completion = openai.ChatCompletion.create(
             model=OPENAI_MODEL,
             messages=[{"role": "user", "content": prompt}],
@@ -70,12 +70,12 @@ def prompt_with_storage_completion(df_head, storage_file, prompt, hash_modifier=
     with open(storage_file, 'r') as f:
         previous_suggestions = json.load(f)
         if md5_hash in previous_suggestions:
-            print("Returning existing previous suggestion.")
+            print("prompt_with_storage -- Returning existing previous suggestion.")
             return 200, previous_suggestions[md5_hash]
 
     try:
         # # Generate suggestions using gpt3.5 turbo.
-        print("No previous suggestion found. Creating new suggestion.")
+        print("prompt_with_storage -- No previous suggestion found. Creating new suggestion.")
         completion = openai.Completion.create(
             model=OPENAI_MODEL_COMPLETION,
             prompt=prompt,

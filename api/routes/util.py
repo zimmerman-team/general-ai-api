@@ -1,4 +1,5 @@
 import os
+import json
 
 
 def json_return(code, data=None, error=None, error_message=None):
@@ -47,3 +48,31 @@ def save_file(request_file, base_path):
     request_file.save(filepath)
 
     return True, filepath
+
+
+def check_and_load_existing_file(request):
+    """
+    Check whether or not a file was uploaded in the correct filetype with a name.
+
+    :param request: the request object
+    :param filetype: the filetype to check for
+    :return: an error message if not, otherwise return the csv file continue the process
+    """
+    try:
+        file_id = request.form['id']
+    except KeyError:
+        return False, json_return(400, 'No ID provided')
+    
+    if file_id == '':
+        return False, json_return(400, 'Provided ID was empty')
+
+    DATA_PATH = os.environ.get("PARSED_DATA_FILES")
+    # check if the file {DATA_PATH}{file_id}.json exists
+    filepath = os.path.join(DATA_PATH, file_id + '.json')
+    if not os.path.isfile(filepath):
+        return False, json_return(400, 'Provided ID was not found among the parsed data files.')
+    # JSON load the filepath and get the "sample" key
+    with open(filepath, 'r') as f:
+        sample_data = json.load(f)['sample']
+
+    return True, sample_data
