@@ -59,10 +59,10 @@ def check_and_load_existing_file(request):
     :return: an error message if not, otherwise return the csv file continue the process
     """
     try:
-        file_id = request.form['id']
+        file_id = request.args.get('id')
     except KeyError:
         return False, json_return(400, 'No ID provided')
-    
+
     if file_id == '':
         return False, json_return(400, 'Provided ID was empty')
 

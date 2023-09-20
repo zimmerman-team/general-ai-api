@@ -104,7 +104,7 @@ def chart_suggest_with_existing_source():
     sc_code, sc_res = ai_report_builder_chart_selector(df)
     if sc_code != 200:
         return util.json_return(sc_code, sc_res)
-    
+    sc_res = sc_res[sc_res.find('['):sc_res.rfind(']')+1]
     # Json parse sc_res
     sc_res = json.loads(sc_res)
 
