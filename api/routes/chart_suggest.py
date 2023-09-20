@@ -121,3 +121,31 @@ def chart_suggest_with_existing_source():
             return util.json_return(code, res)
         charts.append(res)
     return util.json_return(code, charts)
+
+
+@bp.route('/ai-report-chart-suggest-from-existing', methods=['get'])
+def specific_chart_suggest_with_existing_source():
+    """
+    The input is a chart and data.
+    We suggest fields for a chart based on the provided data.
+    """
+    print("AI Report Builder:: Start")
+    file_ok, ret = util.check_and_load_existing_file(request)
+    try:
+        chart = request.args.get('chart')
+    except KeyError:
+        return False, util.json_return(400, 'No chart type provided')
+    if not file_ok:
+        return ret
+    df = pd.DataFrame(ret)
+
+    if chart == 'line':
+        chart = 'linechart'
+    if chart == 'bar':
+        chart = 'barchart'
+    code, res = suggest_chart_fields_from_data(df, chart)
+    # update `res` to be a substring starting with the first { and ending with the last }
+    res = res[res.find('{'):res.rfind('}')+1]
+    if code != 200:
+        return util.json_return(code, res)
+    return util.json_return(code, res)
