@@ -6,7 +6,7 @@ To add aditional routes, create a new file in this routes directory.
 ```
 from flask import Blueprint
 
-bp = Blueprint('<NAME>', __name__, <url_prefix='<NAME> if desired>')
+bp = Blueprint('<NAME>', __name__, <url_prefix='<NAME>')
 
 @bp.route('/', methods=['GET'])
 def <NAME>():
