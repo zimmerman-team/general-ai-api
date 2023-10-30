@@ -66,7 +66,7 @@ def check_and_load_existing_file(request):
     if file_id == '':
         return False, json_return(400, 'Provided ID was empty')
 
-    DATA_PATH = os.environ.get("PARSED_DATA_FILES")
+    DATA_PATH = os.environ.get("AIAPI_PARSED_DATA_FILES")
     # check if the file {DATA_PATH}{file_id}.json exists
     filepath = os.path.join(DATA_PATH, file_id + '.json')
     if not os.path.isfile(filepath):

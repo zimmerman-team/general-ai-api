@@ -9,7 +9,7 @@ from api import create_app
 app = create_app()
 
 # set up auth key for requests
-authorized_keys = [environ.get('API_KEY', 'ZIMMERMAN')]
+authorized_keys = [environ.get('AIAPI_API_KEY', 'ZIMMERMAN')]
 
 @app.before_request
 def check_api_key():

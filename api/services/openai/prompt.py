@@ -4,7 +4,7 @@ import os
 
 import openai
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = os.environ.get("AIAPI_OPENAI_API_KEY")
 OPENAI_MODEL = "gpt-3.5-turbo"
 OPENAI_MODEL_COMPLETION = "text-davinci-003"
 

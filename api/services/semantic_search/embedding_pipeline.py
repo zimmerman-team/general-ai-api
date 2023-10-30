@@ -5,7 +5,7 @@ import pandas as pd
 import tiktoken
 from openai.embeddings_utils import get_embedding
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = os.environ.get("AIAPI_OPENAI_API_KEY")
 
 # embedding model parameters
 embedding_model = "text-embedding-ada-002"

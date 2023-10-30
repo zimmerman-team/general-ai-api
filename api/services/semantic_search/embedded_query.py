@@ -6,7 +6,7 @@ import openai
 import pandas as pd
 from openai.embeddings_utils import cosine_similarity, get_embedding
 
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = os.environ.get("AIAPI_OPENAI_API_KEY")
 
 # embedding model parameters
 EMBEDDING_MODEL = "text-embedding-ada-002"
