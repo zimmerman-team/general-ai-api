@@ -13,6 +13,7 @@ Running the API can be done locally with `flask run`. This starts the flask app 
 ### Environment
 Use the .env.example file. Notable fields:
 - `OPENAI_API_KEY`: found in [openAI settings](https://platform.openai.com/account/api-keys). Used for semantic searching.
+- `API_KEY`: required, can generate any key string, required to access the API to prevent abuse.
 
 ### API Directory
 - The models are the data descriptor of our application, in many cases related to the database model. How each model is defined will heavily depend on the library you use to connect to your database.
