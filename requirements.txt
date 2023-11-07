@@ -28,6 +28,12 @@ platformdirs==3.0.0
 PyYAML==6.0
 virtualenv==20.19.0
 
+# Testing
+pytest==7.4.3
+pytest-mock==3.12.0
+pytest-cov==4.1.0
+pytest-solr==1.0.0
+
 # Runtime
 gunicorn==20.1.0
 
