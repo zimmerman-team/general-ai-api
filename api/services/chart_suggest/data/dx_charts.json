@@ -67,5 +67,177 @@
             }
         ],
         "semantic": "Our treemap has inputs for hierarchy and size. Hierarchy is an ordered list of: a number, date or string, defining the blocks in the treemap. Size is a number defining the size of the hierarchy blocks, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "areastack": {
+        "mapping": [
+            {
+                "name": "X Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Y Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Lines",
+                "types": ["number", "date", "string"]
+            }
+        ],
+        "semantic": "Our areastack has inputs for X Axis, Y Axis and Lines. X Axis and Y Axis are either a number or date, defining the X and Y axis. Lines is a number, date or string, defining the lines on the chart by for example grouping the data points in a category."
+    },
+    "sunburst": {
+        "mapping": [
+            {
+                "name": "Hierarchy",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our sunburst has inputs for hierarchy and size. Hierarchy is an ordered list of: a number, date or string, defining the blocks in the sunburst. Size is a number defining the size of the hierarchy blocks, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "piechart": {
+        "mapping": [
+            {
+                "name": "Arcs",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our piechart has inputs for arcs. Arcs is a number defining the size of the arcs, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "circlepacking": {
+        "mapping": [
+            {
+                "name": "Hierarchy",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our circlepacking has inputs for hierarchy and size. Hierarchy is an ordered list of: a number, date or string, defining the blocks in the circlepacking. Size is a number defining the size of the hierarchy blocks, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "circulargraph": {
+        "mapping": [
+            {
+                "name": "Categories",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our circulargraph has inputs for categories and size. Categories is an ordered list of: a number, date or string, defining the categories in the circulargraph. Size is a number defining the size of the categories, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "forcegraph": {
+        "mapping": [
+            {
+                "name": "Categories",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our forcegraph has inputs for categories and size. Categories is an ordered list of: a number, date or string, defining the categories in the forcegraph. Size is a number defining the size of the categories, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "bubblechart": {
+        "mapping": [
+            {
+                "name": "X Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Y Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            },
+            {
+                "name": "Color",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Label",
+                "types": ["number", "date", "string"]
+            }
+        ],
+        "semantic": "Our bubblechart has inputs for X Axis, Y Axis, Size, Color and Label. X Axis and Y Axis are either a number or date, defining the X and Y axis. Size is a number defining the size of the bubbles. Color is a number, date or string, defining the color of the bubbles. Label is a number, date or string, defining the label of the bubbles."
+    },
+    "heatmap": {
+        "mapping": [
+            {
+                "name": "X Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Y Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our heatmap has inputs for X Axis, Y Axis and Size. X Axis and Y Axis are either a number or date, defining the X and Y axis. Size is a number defining the size of the heatmap blocks, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "radarchart": {
+        "mapping": [
+            {
+                "name": "Spokes",
+                "types": ["number"]
+            },
+            {
+                "name": "Color",
+                "types": ["number", "date", "string"]
+            }
+        ],
+        "semantic": "Our radarchart has inputs for spokes and color. Spokes is a number defining the spokes of the radarchart. Color is a number, date or string, defining the color of the spokes."
+    },
+    "graphgl": {
+        "mapping": [
+            {
+                "name": "Categories",
+                "types": ["number", "date", "string"]
+            },
+            {
+                "name": "Size",
+                "types": ["number"]
+            }
+        ],
+        "semantic": "Our graphgl has inputs for categories and size. Categories is an ordered list of: a number, date or string, defining the categories in the graphgl. Size is a number defining the size of the categories, and can be the average, count, count unique, max, min, sum, median, csv or csv unique."
+    },
+    "areatimeaxis": {
+        "mapping": [
+            {
+                "name":"X Axis",
+                "types": ["date"]
+            },
+            {
+                "name":"Y Axis",
+                "types": ["number", "date"]
+            }
+        ],
+        "semantic": "Our areatimeaxis has inputs for X Axis and Y Axis. X Axis is a date, defining the X axis. Y Axis is either a number or date, defining the Y axis."
+    },
+    "scatterchart": {
+        "mapping": [
+            {
+                "name":"X Axis",
+                "types": ["number", "date"]
+            },
+            {
+                "name":"Y Axis",
+                "types": ["number", "date"]
+            }
+        ],
+        "semantic": "Our scatterchart has inputs for X Axis and Y Axis. X Axis and Y Axis are either a number or date, defining the X and Y axis."
     }
 }
