@@ -6,7 +6,7 @@ import openai
 
 openai.api_key = os.environ.get("AIAPI_OPENAI_API_KEY")
 OPENAI_MODEL = "gpt-3.5-turbo"
-OPENAI_MODEL_COMPLETION = "text-davinci-003"
+OPENAI_MODEL_COMPLETION = "gpt-3.5-turbo-instruct"
 
 
 def prompt_with_storage(df_head, storage_file, prompt, hash_modifier="", temperature=1):
