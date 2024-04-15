@@ -21,6 +21,20 @@ Use the .env.example file. Notable fields:
 - The schemas are the definitions for inputs and outputs of our API, what parameters are allowed, what information we will output. They correlate to our resources, but they are not necessarily the same as our models.
 - The services are modules that define application logic or interact with other services or the db layer. Routes should be as simple as possible and delegate all logic to the services.
 
+### Packages
+- openai
+- python-dotenv
+- flake8
+- isort
+- pre-commit
+- flake8-isort
+- flask
+- gunicorn
+- pandas
+- tiktoken
+- regex
+- seaborn
+
 ### Code quality
 *flake8* is used to maintain code quality in pep8 style<br />
 *isort* is used to maintain the imports<br />
