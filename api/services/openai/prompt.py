@@ -2,9 +2,10 @@ import hashlib
 import json
 import os
 
-import openai
+from openai import OpenAI
 
-openai.api_key = os.environ.get("AIAPI_OPENAI_API_KEY")
+client = OpenAI(api_key=os.environ.get("AIAPI_OPENAI_API_KEY"))
+
 OPENAI_MODEL = "gpt-3.5-turbo"
 OPENAI_MODEL_COMPLETION = "gpt-3.5-turbo-instruct"
 
@@ -33,10 +34,10 @@ def prompt_with_storage(df_head, storage_file, prompt, hash_modifier="", tempera
     try:
         # # Generate suggestions using gpt3.5 turbo.
         print("prompt_with_storage -- No previous suggestion found. Creating new suggestion.")
-        completion = openai.ChatCompletion.create(
+        completion = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[{"role": "user", "content": prompt}],
-            temperature=temperature,
+            temperature=temperature
         )
         res = completion.choices[0].message.content
         # Add an object with the hash as key and the result as value to, and add it to the previous suggestions file.
@@ -76,10 +77,10 @@ def prompt_with_storage_completion(df_head, storage_file, prompt, hash_modifier=
     try:
         # # Generate suggestions using gpt3.5 turbo.
         print("prompt_with_storage -- No previous suggestion found. Creating new suggestion.")
-        completion = openai.Completion.create(
+        completion = client.completions.create(
             model=OPENAI_MODEL_COMPLETION,
             prompt=prompt,
-            temperature=temperature,
+            temperature=temperature
         )
         res = completion.choices[0].text
         # strip any newLines from the result

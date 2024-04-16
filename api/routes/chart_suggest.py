@@ -1,12 +1,13 @@
-import pandas as pd
-from flask import Blueprint, request
 import json
 
+import pandas as pd
+from flask import Blueprint, request
+
 from api.routes import util
+from api.services.chart_suggest.ai_report_builder import ai_report_builder_chart_selector
 from api.services.chart_suggest.chart_fields_from_data import suggest_chart_fields_from_data
 from api.services.chart_suggest.chart_for_csv_file import suggest_chart_for_csv_file
 from api.services.chart_suggest.chart_for_csv_file_with_context import suggest_chart_for_csv_file_with_context
-from api.services.chart_suggest.ai_report_builder import ai_report_builder_chart_selector
 
 bp = Blueprint('chart_suggest', __name__, url_prefix='/chart-suggest')
 
@@ -74,7 +75,7 @@ def chart_suggest_with_chart_from_data():
     sc_code, sc_res = ai_report_builder_chart_selector(df)
     if sc_code != 200:
         return util.json_return(sc_code, sc_res)
-    
+
     # Json parse sc_res
     sc_res = json.loads(sc_res)
 

@@ -1,6 +1,5 @@
 from os import environ
 
-
 AIAPI_API_KEY = environ.get('AIAPI_API_KEY', '')
 AIAPI_OPENAI_API_KEY = environ.get('AIAPI_OPENAI_API_KEY', '')
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB
