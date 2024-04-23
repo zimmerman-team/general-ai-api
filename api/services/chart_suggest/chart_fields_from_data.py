@@ -25,6 +25,7 @@ def suggest_chart_fields_from_data(df, chart):
         and if you cannot determine the most likely one use the sum.
         Please return your answer as a JSON object. For size, use the column as the key and the size as the value.
         If we are generating a linechart, please use the keys 'x' and 'y' for the x and y axis respectively, and for the lines use lowercase lines.
+        For keys in your JSON object, make sure they are always lowercase.
         Please include a short title for the chart under the key 'title'. And the value {chart} under the key 'chartType'.
         If you have an explanation for your answer, please include it in the JSON object under the key 'explanation'."""
 
