@@ -25,7 +25,8 @@ def suggest_chart_fields_from_data(df, chart):
         and if you cannot determine the most likely one use the sum.
         Please return your answer as a JSON object.
         If size is required, for size, use the column as the key and the size as the value.
-        If we are generating one of the following: linechart, areachart, bubblechart, heatmap, areatimeaxis, or scatterchart, please use the keys 'x' and 'y' for the x and y axis respectively, and for the lines use lowercase lines.
+        If we are generating one of the following: linechart, areachart, bubblechart, heatmap, areatimeaxis, areastack, or scatterchart, please use the keys 'x' and 'y' for the x and y axis respectively, and for the lines use lowercase lines.
+        If we are generating a linechart, areatimeaxis, or areastack, for the y axis, instead of just the column name, return a key value pair where the key is the column name, and the value the aggregation function (default to count).
         For keys in your JSON object, make sure they are always lowercase.
         Please include a short title for the chart under the key 'title'. And the value {chart} under the key 'chartType'.
         If you have an explanation for your answer, please include it in the JSON object under the key 'explanation'."""
