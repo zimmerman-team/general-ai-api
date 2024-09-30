@@ -13,6 +13,8 @@ Running the API can be done locally with `flask run`. This starts the flask app 
 ### Environment
 Use the .env.example file. Notable fields:
 - `AIAPI_OPENAI_API_KEY`: found in [openAI settings](https://platform.openai.com/account/api-keys). Used for semantic searching.
+- `AIAPI_OPENAI_CB_ASSISTANT_ID`: found in the [assistants overview](https://platform.openai.com/playground/assistants).
+- `AIAPI_OPENAI_IQ_ASSISTANT_ID`: found in the [assistants overview](https://platform.openai.com/playground/assistants).
 - `AIAPI_API_KEY`: required, can generate any key string, required to access the API to prevent abuse.
 
 ### API Directory

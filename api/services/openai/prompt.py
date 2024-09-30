@@ -6,7 +6,7 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.environ.get("AIAPI_OPENAI_API_KEY"))
 
-OPENAI_MODEL = "gpt-3.5-turbo"
+OPENAI_MODEL = "gpt-4o-mini"
 OPENAI_MODEL_COMPLETION = "gpt-3.5-turbo-instruct"
 
 

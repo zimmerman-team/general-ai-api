@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 
 from api.routes import util
+from api.services.openai.assistants import iq_assistant_prompt
 from api.services.openai.prompt import prompt_with_storage, prompt_with_storage_completion
 
 PREVIOUS_SUGGESTIONS_FILE = './api/services/prompts/data/prompts.json'
@@ -33,7 +34,7 @@ def extract_search_term():
         The context: Your job is to convert the given topic with one search term which will lead to functional results on the Kaggle datasets page.
         Keep it as concise as possible. Do not include the words: 'data', 'dataset', 'Dataset', 'Report' or 'report' in your answer.
         We are looking for as few words as possible, to broaden the search.
-        The Topic is: '{prompt}'. The search term is:"""
+        The Topic is: '{prompt}'. The search term is:"""  # NOQA: E501
     code, res = prompt_with_storage_completion(
         enriched_prompt,
         PREVIOUS_SUGGESTIONS_FILE,
@@ -41,4 +42,21 @@ def extract_search_term():
         temperature=0.1
     )
 
+    return util.json_return(code, res)
+
+
+@bp.route('/iati-cloud-external-search', methods=['post'])
+def iati_cloud_external_search():
+    """
+    Setup the chart builder assistant.
+    """
+    try:
+        prompt = request.form['prompt']
+    except KeyError:
+        try:
+            prompt = request.args.get('prompt')
+        except KeyError:
+            return util.json_return(400, "No prompt provided.")
+    code, res = iq_assistant_prompt(prompt)
+    code = 200 if code == "OK" else 500
     return util.json_return(code, res)

@@ -1,6 +1,4 @@
-import json
-
-from api.services.openai.prompt import prompt_with_storage
+from api.services.openai.assistants import cb_assistant_prompt_with_storage
 
 PREVIOUS_SUGGESTIONS_FILE = './api/services/chart_suggest/data/ai_report_builder_previous_suggestions.json'
 DX_CHART_DEFINITIONS = './api/services/chart_suggest/data/dx_charts.json'
@@ -12,29 +10,30 @@ def ai_report_builder_chart_selector(df):
 
     :param df: pandas dataframe containing the content of the uploaded CSV file
     """
-    df_head = df.head().to_string()
-    chart_descriptions = get_all_charts_semantic_context()
+    df_head = _sample_df(df)
 
-    prompt = f"""Given the following sample dataframe:\n{df_head}\n
-        and given the following chart descriptions:\n{chart_descriptions}\n
+    prompt = f"""Given your known chart descriptions, and given the following sample dataframe:\n{df_head}\n
         What are 3 chart types you would use to visualize this data?
         Please return a json list, containing strings of the chart types in lower case and no spaces.
-        If there is no fitting chart, please return an empty json list."""
+        If there is no fitting chart, please return an empty json list. Only return the actual json content, no additional text."""  # NOQA: E501
+    return cb_assistant_prompt_with_storage(df_head, PREVIOUS_SUGGESTIONS_FILE, prompt)
 
-    return prompt_with_storage(df_head, PREVIOUS_SUGGESTIONS_FILE, prompt)
 
-
-def get_all_charts_semantic_context():
+def _sample_df(df):
     """
-    Get the semantic context for a given chart type.
+    Sample size should be more than 4 rows, but not too large as to not overwhelm the LLM with too much information.
 
-    :param chart: the chart type
-    :return: the semantic context
+    :param df: pandas dataframe
     """
-    with open(DX_CHART_DEFINITIONS, 'r') as f:
-        chart_definitions = json.load(f)
-        semantic_chart_definitions = []
-        for chart in chart_definitions:
-            semantic_chart_definitions.append(chart_definitions[chart]['semantic'])
-        semantic_chart_definitions = '\n'.join(semantic_chart_definitions)
-        return semantic_chart_definitions
+    n_rows_df = df.shape[0]
+    n_head = n_rows_df
+    if n_rows_df > 50:
+        n_head = 50
+    head = df.head(n_head).to_string()
+    while len(head) > 100000:  # We can send up to 128k tokens, this limits the dataset size.
+        n_head = n_head // 2
+        if n_head == 0:
+            n_head = 1
+            break
+        head = df.head(n_head).to_string()
+    return head

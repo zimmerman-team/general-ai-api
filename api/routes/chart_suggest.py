@@ -8,6 +8,7 @@ from api.services.chart_suggest.ai_report_builder import ai_report_builder_chart
 from api.services.chart_suggest.chart_fields_from_data import suggest_chart_fields_from_data
 from api.services.chart_suggest.chart_for_csv_file import suggest_chart_for_csv_file
 from api.services.chart_suggest.chart_for_csv_file_with_context import suggest_chart_for_csv_file_with_context
+from api.services.openai.assistants import create_chart_builder_assistant, create_iati_query_assistant
 
 bp = Blueprint('chart_suggest', __name__, url_prefix='/chart-suggest')
 
@@ -66,7 +67,6 @@ def chart_suggest_with_chart_from_data():
     The input is a chart and data.
     We suggest fields for a chart based on the provided data.
     """
-    print("AI Report Builder:: Start")
     file_ok, ret = util.check_file(request, '.csv')
     if not file_ok:
         return ret
@@ -96,7 +96,6 @@ def chart_suggest_with_existing_source():
     The input is a chart and data.
     We suggest fields for a chart based on the provided data.
     """
-    print("AI Report Builder:: Start")
     file_ok, ret = util.check_and_load_existing_file(request)
     if not file_ok:
         return ret
@@ -115,13 +114,24 @@ def chart_suggest_with_existing_source():
             chart = 'linechart'
         if chart == 'bar':
             chart = 'barchart'
+        if chart == 'scatterplot':
+            chart = 'scatterchart'
         code, res = suggest_chart_fields_from_data(df, chart)
         # update `res` to be a substring starting with the first { and ending with the last }
         res = res[res.find('{'):res.rfind('}')+1]
         if code != 200:
             return util.json_return(code, res)
-        charts.append(res)
+        if _valid_chart(chart, res, df):
+            charts.append(res)
     return util.json_return(code, charts)
+
+
+def _valid_chart(chart, res, df):
+    """
+    To be implemented later, should validate the chart suggestion.
+    """
+    print(chart, res, df)
+    return True
 
 
 @bp.route('/ai-report-chart-suggest-from-existing', methods=['get'])
@@ -130,7 +140,6 @@ def specific_chart_suggest_with_existing_source():
     The input is a chart and data.
     We suggest fields for a chart based on the provided data.
     """
-    print("AI Report Builder:: Start")
     file_ok, ret = util.check_and_load_existing_file(request)
     try:
         chart = request.args.get('chart')
@@ -149,4 +158,22 @@ def specific_chart_suggest_with_existing_source():
     res = res[res.find('{'):res.rfind('}')+1]
     if code != 200:
         return util.json_return(code, res)
+    return util.json_return(code, res)
+
+
+@bp.route('/setup-chart-builder-assistant', methods=['get'])
+def setup_chart_builder_assistant():
+    """
+    Setup the chart builder assistant.
+    """
+    code, res = create_chart_builder_assistant()
+    return util.json_return(code, res)
+
+
+@bp.route('/setup-iati-query-assistant', methods=['get'])
+def setup_iati_query_assistant():
+    """
+    Setup the chart builder assistant.
+    """
+    code, res = create_iati_query_assistant()
     return util.json_return(code, res)
