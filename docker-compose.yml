@@ -12,7 +12,9 @@ services:
       - 5000:5000
     env_file:
       - .env
-  
+    environment:
+      - AIAPI_PARSED_DATA_FILES=/parsed-data-files/
+
   nginx:
     image: nginx:latest
     ports:

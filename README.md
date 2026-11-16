@@ -1,6 +1,21 @@
 # Zimmerman General AI API
 This is a runnable service that provides access to general AI services developed by Zimmerman.
 
+## Running it
+
+This repo has the same `make` commands as the other DX repos, which [infra.dx](https://github.com/zimmerman-team/DX) clones side by side (`make repos` there).
+
+| Command | What it does |
+|---|---|
+| `make setup` | Create a Python 3.11 virtualenv in `.venv` with the requirements (uses [uv](https://docs.astral.sh/uv/) if you have it), create `.env` from `.env.example` |
+| `make dev` | Run the API on http://localhost:5000, reloading on changes |
+| `make build` | Build the Docker image, as CI does |
+| `make lint` | Run flake8 |
+
+dx.server calls the API on port 5000. On macOS the AirPlay Receiver can hold that port; turn it off in System Settings > General > AirDrop & Handoff. To run the whole DX stack, in Docker or not, use infra.dx.
+
+Production runs the Docker image: CI builds it on every push (`.github/workflows/image.yaml`) and infra.dx deploys it.
+
 ## Development
 Check out [Docker](#docker) for a quickstart guide.
 
